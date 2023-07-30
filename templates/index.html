@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Flask App</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <h1>Junqi</h1>
+    <form id="myForm">
+        <label for="red_team">Red Card:</label>
+        <input type="password" id="red_team" name="red_team"><br><br>
+        <label for="black_team">Black Card:</label>
+        <input type="password" id="black_team" name="black_team"><br><br>
+        <input type="submit" value="Fight">
+        <input type="button" id="reset" value="Reset">
+    </form>
+    <hr>
+    <h2>Result</h2>
+    <div id="result"></div>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#myForm').submit(function (event) {
+                event.preventDefault();
+                $.ajax({
+                    type: 'POST',
+                    url: '/result',
+                    data: JSON.stringify({
+                        'red': $('input[name=red_team]').val(),
+                        'black': $('input[name=black_team]').val()
+                    }),
+                    contentType: 'application/json;charset=UTF-8',
+                    success: function (response) {
+                        $('#result').text(response.result);
+                    },
+                    error: function (error) {
+                        console.log(error);
+                    }
+                });
+            });
+            $('#reset').click(function () {
+                $('#result').text('');
+                $('#myForm')[0].reset();
+            });
+        });
+    </script>
+</body>
+
+</html>
