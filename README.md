@@ -1,13 +1,17 @@
-Based on the given requirements, here are the core classes, functions, and methods that will be necessary:
+# Junqi Web
 
-1. `app.py` (Entrypoint file):
-   - `app` class: Represents the web application.
-   - `index` method: Renders the main page of the website.
-   - `fight` method: Handles the logic when the "Fight" button is clicked.
+The deployed simple flask app based on [junqi-simple](https://github.com/tommysteryy/junqi-simple)
 
-2. `templates/index.html`:
-   - HTML template file for the main page of the website.
+## Dev start:
 
-Now, let's proceed with the implementation of each file:
+1. Install all requirements:
 
-`app.py`
+```bash
+pip install -r "requirements.txt"
+```
+
+2. Start flask app
+
+```bash
+python app.py
+```
